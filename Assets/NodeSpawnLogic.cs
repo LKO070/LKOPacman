@@ -12,16 +12,7 @@ public class NodeSpawnLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (gameObject.name == "Node")
-        {
-            currentSpawnOffset = spawnOffset;
-            for (int i = 0; i < numToSpawn; i++)
-            {
-                //Cloning for new node
-                GameObject nodeClone = Instantiate(gameObject, new Vector3(transform.position.x, transform.position.y + currentSpawnOffset, 0), Quaternion.identity);
-                currentSpawnOffset += spawnOffset;
-            }
-        }
+        
     }
 
     // Update is called once per frame

@@ -15,4 +15,12 @@ public class EmptySpaces : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Node")
+        {
+            Destroy(collision.gameObject);
+        }
+    }
 }
