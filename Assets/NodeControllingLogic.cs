@@ -48,4 +48,30 @@ public class NodeControllingLogic : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// Checks the direction given and returns the next node if you can move that way
+    /// returns null if player can't move or if the direction isn't possible to move to
+    /// </summary>
+    /// <param name="direction"></param>
+    /// <returns></returns>
+    public GameObject DetermineNodeFromDirection(string direction)
+    {
+        //Collection to hold keys and tuples in for more efficient use of determining direction
+        var directions = new Dictionary<string, (bool canMove, GameObject node)>
+        {
+            {"left", (canMoveLeft, nodeLeft) },
+            {"right", (canMoveRight, nodeRight) },
+            {"up", (canMoveUp, nodeUp) },
+            {"down", (canMoveDown, nodeDown) }
+        };
+
+        //Get value from associated key. If found it stores tuple value
+        if (directions.TryGetValue(direction, out var result) && result.canMove)
+        {
+            return result.node;
+        }
+
+        return null;
+    }
 }
