@@ -65,12 +65,27 @@ public class MovementController : MonoBehaviour
 
         if (direction == "left")
         {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
             sR.flipX = true;
         }
         else
         {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
             sR.flipX = false;
         }
+
+        if (direction == "up")
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 90);
+            sR.flipX = false;
+        }
+        else if (direction == "down")
+        {
+            transform.rotation = Quaternion.Euler(0, 0, -90);
+            sR.flipX = false;
+        }
+
+    
     }
 
     public void SetDirection(string newDirection)
