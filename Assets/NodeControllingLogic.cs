@@ -23,15 +23,15 @@ public class NodeControllingLogic : MonoBehaviour
     }
 
     /// <summary>
-    /// Checks if movement is possible in the specified direction by performing a raycast.
-    /// Updates the movement flag and stores the hit object if it is within the specified shoot distance.
+    /// Checks if movement is possible in specific direction by performing a raycast.
+    /// Updates movement flag and stores hit object if it is within shoot distance.
     /// </summary>
-    /// <param name="direction">The direction in which to perform the raycast (Vector2).</param>
-    /// <param name="canMove">A reference to the boolean flag that indicates if movement in the given direction is possible.</param>
-    /// <param name="node">A reference to the GameObject that the raycast hits, if within the shoot distance.</param>
+    /// <param name="direction">Direction in which to perform the raycast (Vector2).</param>
+    /// <param name="canMove">Reference to Boolean that says if movement in specific direction is possible.</param>
+    /// <param name="node">Reference to GameObject that the raycast hits, if within shooting distance.</param>
     void CheckMovement(Vector2 direction, ref bool canMove, ref GameObject node)
     {
-        // Perform a raycast in the specified direction from the current position
+        // Performs raycast in the specific direction from the current position
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, direction);
 
         // Loop through all of the game objects that the raycast hits
@@ -40,7 +40,7 @@ public class NodeControllingLogic : MonoBehaviour
             // Calculate the distance using the appropriate axis (x or y) based on the direction
             float distance = Mathf.Abs((direction.x != 0 ? hits[i].point.x : hits[i].point.y) - (direction.x != 0 ? transform.position.x : transform.position.y));
 
-            // If the distance is less than the defined shoot distance, update movement and store the node
+            // If distance is less than the defined shoot distance, update movement and store node
             if (distance < shootDistance)
             {
                 canMove = true;
