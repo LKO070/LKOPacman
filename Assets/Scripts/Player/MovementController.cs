@@ -10,12 +10,9 @@ public class MovementController : MonoBehaviour
     public string direction = "";
     public string lastMovingDirection = "";
 
-    private SpriteRenderer sR;
-
     // Start is called before the first frame update
     void Start()
     {
-        sR = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -62,29 +59,6 @@ public class MovementController : MonoBehaviour
                 }
             }
         }
-
-        if (direction == "left")
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            sR.flipX = true;
-        }
-        else
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            sR.flipX = false;
-        }
-
-        if (direction == "up")
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 90);
-            sR.flipX = false;
-        }
-        else if (direction == "down")
-        {
-            transform.rotation = Quaternion.Euler(0, 0, -90);
-            sR.flipX = false;
-        }
-
     
     }
 

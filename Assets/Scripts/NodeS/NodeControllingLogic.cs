@@ -13,8 +13,16 @@ public class NodeControllingLogic : MonoBehaviour
 
     private float shootDistance = 0.4f;
 
-    void Start()
+    public bool IsPelletNode = true;
+    public bool hasPellet = false;
+
+    void Awake()
     {
+        if (transform.childCount > 0)
+        {
+            hasPellet = true;
+            IsPelletNode = true;
+        }
         // Check for movement in each direction
         CheckMovement(Vector2.left, ref canMoveLeft, ref nodeLeft);
         CheckMovement(Vector2.right, ref canMoveRight, ref nodeRight);
