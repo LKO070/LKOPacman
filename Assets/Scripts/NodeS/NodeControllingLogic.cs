@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NodeControllingLogic : MonoBehaviour
 {
+    public GameManager gameManager;
+
     public bool canMoveLeft = false;
     public bool canMoveRight = false;
     public bool canMoveUp = false;
@@ -12,7 +14,7 @@ public class NodeControllingLogic : MonoBehaviour
     public GameObject nodeLeft, nodeRight, nodeUp, nodeDown;
 
     private float shootDistance = 0.4f;
-
+    
     public bool IsPelletNode = false;
     public bool hasPellet = false;
 
@@ -20,6 +22,7 @@ public class NodeControllingLogic : MonoBehaviour
 
     void Awake()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         //If Node has a child object that child must be the pellet
         if (transform.childCount > 0)
         {
@@ -89,10 +92,11 @@ public class NodeControllingLogic : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && IsPelletNode)
+        if (collision.tag == "Player" && hasPellet)
         {
             hasPellet = false;
             dotSprite.enabled = false;
+            gameManager.EatenPellet(this);
         }
     }
 }
