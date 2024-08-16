@@ -13,15 +13,19 @@ public class NodeControllingLogic : MonoBehaviour
 
     private float shootDistance = 0.4f;
 
-    public bool IsPelletNode = true;
+    public bool IsPelletNode = false;
     public bool hasPellet = false;
+
+    public SpriteRenderer dotSprite;
 
     void Awake()
     {
+        //If Node has a child object that child must be the pellet
         if (transform.childCount > 0)
         {
             hasPellet = true;
             IsPelletNode = true;
+            dotSprite = GetComponentInChildren<SpriteRenderer>();
         }
         // Check for movement in each direction
         CheckMovement(Vector2.left, ref canMoveLeft, ref nodeLeft);
@@ -49,7 +53,7 @@ public class NodeControllingLogic : MonoBehaviour
             float distance = Mathf.Abs((direction.x != 0 ? hits[i].point.x : hits[i].point.y) - (direction.x != 0 ? transform.position.x : transform.position.y));
 
             // If distance is less than the defined shoot distance, update movement and store node
-            if (distance < shootDistance)
+            if (distance < shootDistance && hits[i].collider.tag == "Node")
             {
                 canMove = true;
                 node = hits[i].collider.gameObject;
@@ -81,5 +85,14 @@ public class NodeControllingLogic : MonoBehaviour
         }
 
         return null;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player" && IsPelletNode)
+        {
+            hasPellet = false;
+            dotSprite.enabled = false;
+        }
     }
 }
