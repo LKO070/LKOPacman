@@ -1,16 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     private AudioSource siren;
+    private int currentEatAudio = 0;
+    
     public AudioSource eat1, eat2;
 
-    public int currentEatAudio = 0;
+    //Variables for the score
     [SerializeField] private int score;
+    public TMP_Text scoreText;
+
+    public
     void Awake()
     {
+        score = 0;
+        currentEatAudio = 0;
         siren = GetComponent<AudioSource>();
         siren.Play();
     }
@@ -19,6 +27,12 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void AddScore(int amount)
+    {
+        score += amount;
+        scoreText.text = score.ToString();
     }
 
     public void EatenPellet(NodeControllingLogic nodeControl)
@@ -33,5 +47,14 @@ public class GameManager : MonoBehaviour
             eat2.Play();
             currentEatAudio = 0;
         }
+
+        AddScore(2);
+        //Add score
+
+        //Check amount of remaining pellets
+
+        //Check amount of pellets eaten
+
+        //Check for power pellet
     }
 }
