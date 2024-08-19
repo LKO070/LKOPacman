@@ -31474,7 +31474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentNode: {fileID: 0}
-  speed: 4
+  speed: 1
   direction: 
   lastMovingDirection: 
 --- !u!114 &1136947305
@@ -31489,6 +31489,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b7f88ae5746ab478b0a1b03149fa4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 1
+  type: 1
+  ghostNodeLeft: {fileID: 1515613375}
+  ghostnodeRight: {fileID: 1412339435}
+  startingNode: {fileID: 1838952142}
+  exitTime: 0
 --- !u!4 &1136947306
 Transform:
   m_ObjectHideFlags: 0

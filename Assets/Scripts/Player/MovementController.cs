@@ -10,6 +10,8 @@ public class MovementController : MonoBehaviour
     public string direction = "";
     public string lastMovingDirection = "";
 
+    private bool isGhost = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,10 @@ public class MovementController : MonoBehaviour
         //Calculate if player is at center of the current node
         if ((transform.position.x == currentNode.transform.position.x && transform.position.y == currentNode.transform.position.y) || reverseDirection)
         {
+            if (isGhost)
+            {
+                GetComponent<EnemyController>().CenterOfNode(currentNodeController);
+            }
             //Get next node from node controller using player's current direction
             GameObject newNode = currentNodeController.DetermineNodeFromDirection(direction);
 
