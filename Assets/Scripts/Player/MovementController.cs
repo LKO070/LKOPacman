@@ -10,7 +10,7 @@ public class MovementController : MonoBehaviour
     public string direction = "";
     public string lastMovingDirection = "";
 
-    private bool isGhost = false;
+    [SerializeField] private bool isGhost = false;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +43,7 @@ public class MovementController : MonoBehaviour
         {
             if (isGhost)
             {
-                GetComponent<EnemyController>().CenterOfNode(currentNodeController);
+                GetComponent<EnemyController>().ReachedCenterNode(currentNodeController);
             }
             //Get next node from node controller using player's current direction
             GameObject newNode = currentNodeController.DetermineNodeFromDirection(direction);

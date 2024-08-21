@@ -23,7 +23,8 @@ public class EnemyController : MonoBehaviour
     public GhostNodeStatesEnum state;
     public GhostType type;
 
-    [SerializeField] private GameObject ghostNodeLeft, ghostnodeRight, startingNode;
+    [SerializeField] private GameObject ghostNodeLeft, ghostnodeRight, ghostNodeCenter, ghostNodeStart;
+    [SerializeField] private GameObject startingNode;
 
     //Check variable for exit time
     [SerializeField] private bool exitTime;
@@ -39,7 +40,7 @@ public class EnemyController : MonoBehaviour
         if (type == GhostType.red)
         {
             state = GhostNodeStatesEnum.leftNode;
-            startingNode = ghostNodeLeft; 
+            startingNode = ghostNodeLeft;
         }
         else if (type == GhostType.blue)
         {
@@ -56,8 +57,7 @@ public class EnemyController : MonoBehaviour
         
     }
 
-    
-    public void CenterOfNode(NodeControllingLogic nodeControl)
+    public void ReachedCenterNode(NodeControllingLogic nodeController)
     {
         if (state == GhostNodeStatesEnum.movingInNodes)
         {
@@ -65,45 +65,37 @@ public class EnemyController : MonoBehaviour
         }
         else if (state == GhostNodeStatesEnum.respawning)
         {
-            //Determine nearest route to base
+            //respawning determine
         }
         else
         {
-            //If time to exit base
             if (exitTime)
             {
-                GhostToNextState();
+                if (state == GhostNodeStatesEnum.leftNode)
+                {
+                    state = GhostNodeStatesEnum.centerNode;
+                    Debug.Log("working");
+                    movementController.SetDirection("right");
+                }
+                else if (state == GhostNodeStatesEnum.rightNode)
+                {
+                    state = GhostNodeStatesEnum.centerNode;
+                    movementController.SetDirection("left");
+                }
+                else if (state == GhostNodeStatesEnum.centerNode)
+                {
+                    state = GhostNodeStatesEnum.startNode;
+                    movementController.SetDirection("up");
+                }
+                else if (state == GhostNodeStatesEnum.startNode)
+                {
+                    state = GhostNodeStatesEnum.movingInNodes;
+                    movementController.SetDirection("left");
+                }
+
+
             }
         }
-    }
-
-    private void GhostToNextState()
-    {
-        switch (state)
-        {
-            case GhostNodeStatesEnum.leftNode:
-                state = GhostNodeStatesEnum.centerNode;
-                movementController.SetDirection("right");
-                break;
-            case GhostNodeStatesEnum.rightNode:
-                state = GhostNodeStatesEnum.centerNode;
-                movementController.SetDirection("left");
-                break;
-            case GhostNodeStatesEnum.centerNode:
-                state = GhostNodeStatesEnum.startNode;
-                movementController.SetDirection("up");
-                break;
-            case GhostNodeStatesEnum.startNode:
-                state = GhostNodeStatesEnum.movingInNodes;
-                movementController.SetDirection("left");
-                break;
-        }
-    }
-
-    private void SetStateDirection(GhostNodeStatesEnum newState, string direction)
-    {
-        state = newState;
-        movementController.SetDirection(direction);
     }
     
 }
