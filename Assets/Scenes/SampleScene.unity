@@ -26806,6 +26806,7 @@ GameObject:
   - component: {fileID: 993558434}
   - component: {fileID: 993558436}
   - component: {fileID: 993558438}
+  - component: {fileID: 993558439}
   m_Layer: 0
   m_Name: Node
   m_TagString: Node
@@ -26827,7 +26828,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1145193678}
-  m_Father: {fileID: 1217680555}
+  m_Father: {fileID: 1151421748}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &993558436
 BoxCollider2D:
@@ -26898,6 +26899,20 @@ MonoBehaviour:
   IsPelletNode: 1
   hasPellet: 0
   dotSprite: {fileID: 0}
+--- !u!114 &993558439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993558433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad034cd88e060442af3d61e92104280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerPelletTime: 10
+  pelletTimerText: {fileID: 1995299682}
 --- !u!1 &993629419
 GameObject:
   m_ObjectHideFlags: 0
@@ -28230,7 +28245,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1441002984}
@@ -28277,7 +28292,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0821966c85ff73140b8e10fb9e5cd535, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.24063301, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -29420,7 +29435,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1376288079}
@@ -29467,7 +29482,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0821966c85ff73140b8e10fb9e5cd535, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.24063301, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -31516,6 +31531,7 @@ MonoBehaviour:
   ghostNodeStart: {fileID: 1838952142}
   startingNode: {fileID: 0}
   exitTime: 0
+  hasPowerPellet: 0
   gM: {fileID: 0}
 --- !u!50 &1136947308
 Rigidbody2D:
@@ -31887,7 +31903,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 993558434}
@@ -31934,7 +31950,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0821966c85ff73140b8e10fb9e5cd535, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.24063301, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -31944,6 +31960,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1151421747
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1151421748}
+  m_Layer: 0
+  m_Name: PowerNodes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1151421748
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151421747}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1441002984}
+  - {fileID: 1376288079}
+  - {fileID: 993558434}
+  - {fileID: 1153864676}
+  m_Father: {fileID: 1293410484}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1153864675
 GameObject:
   m_ObjectHideFlags: 0
@@ -31955,6 +32006,7 @@ GameObject:
   - component: {fileID: 1153864676}
   - component: {fileID: 1153864678}
   - component: {fileID: 1153864680}
+  - component: {fileID: 1153864681}
   m_Layer: 0
   m_Name: Node
   m_TagString: Node
@@ -31976,7 +32028,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1562761143}
-  m_Father: {fileID: 1217680555}
+  m_Father: {fileID: 1151421748}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1153864678
 BoxCollider2D:
@@ -32047,6 +32099,20 @@ MonoBehaviour:
   IsPelletNode: 1
   hasPellet: 0
   dotSprite: {fileID: 0}
+--- !u!114 &1153864681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153864675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad034cd88e060442af3d61e92104280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerPelletTime: 10
+  pelletTimerText: {fileID: 1995299682}
 --- !u!1 &1155666549
 GameObject:
   m_ObjectHideFlags: 0
@@ -34198,7 +34264,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1441002984}
   - {fileID: 1331859877}
   - {fileID: 911986760}
   - {fileID: 1109404339}
@@ -34223,7 +34288,6 @@ Transform:
   - {fileID: 23772596}
   - {fileID: 115566667}
   - {fileID: 947131014}
-  - {fileID: 1376288079}
   - {fileID: 1612765506}
   - {fileID: 1124456002}
   - {fileID: 912032569}
@@ -34238,7 +34302,6 @@ Transform:
   - {fileID: 823245033}
   - {fileID: 1767268165}
   - {fileID: 1788112017}
-  - {fileID: 1153864676}
   - {fileID: 1371373972}
   - {fileID: 433063253}
   - {fileID: 1408200423}
@@ -34485,7 +34548,6 @@ Transform:
   - {fileID: 1135153887}
   - {fileID: 847257433}
   - {fileID: 470810554}
-  - {fileID: 993558434}
   m_Father: {fileID: 1293410484}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1223897333
@@ -34686,6 +34748,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1572216979}
+  - {fileID: 1995299684}
   - {fileID: 1960987075}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -36816,6 +36879,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1151421748}
   - {fileID: 1217680555}
   - {fileID: 1274971318}
   m_Father: {fileID: 0}
@@ -38939,6 +39003,7 @@ GameObject:
   - component: {fileID: 1376288079}
   - component: {fileID: 1376288081}
   - component: {fileID: 1376288083}
+  - component: {fileID: 1376288084}
   m_Layer: 0
   m_Name: Node
   m_TagString: Node
@@ -38960,7 +39025,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1070727980}
-  m_Father: {fileID: 1217680555}
+  m_Father: {fileID: 1151421748}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1376288081
 BoxCollider2D:
@@ -39031,6 +39096,20 @@ MonoBehaviour:
   IsPelletNode: 1
   hasPellet: 0
   dotSprite: {fileID: 0}
+--- !u!114 &1376288084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376288078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad034cd88e060442af3d61e92104280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerPelletTime: 10
+  pelletTimerText: {fileID: 1995299682}
 --- !u!1 &1376839248
 GameObject:
   m_ObjectHideFlags: 0
@@ -41200,6 +41279,7 @@ GameObject:
   - component: {fileID: 1441002984}
   - component: {fileID: 1441002986}
   - component: {fileID: 1441002988}
+  - component: {fileID: 1441002989}
   m_Layer: 0
   m_Name: Node
   m_TagString: Node
@@ -41221,7 +41301,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1028834275}
-  m_Father: {fileID: 1217680555}
+  m_Father: {fileID: 1151421748}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1441002986
 BoxCollider2D:
@@ -41292,6 +41372,20 @@ MonoBehaviour:
   IsPelletNode: 1
   hasPellet: 0
   dotSprite: {fileID: 0}
+--- !u!114 &1441002989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441002983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad034cd88e060442af3d61e92104280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerPelletTime: 10
+  pelletTimerText: {fileID: 1995299682}
 --- !u!1 &1442032425
 GameObject:
   m_ObjectHideFlags: 0
@@ -44575,7 +44669,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1153864676}
@@ -44622,7 +44716,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0821966c85ff73140b8e10fb9e5cd535, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.24063301, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -56562,6 +56656,140 @@ MonoBehaviour:
   IsPelletNode: 1
   hasPellet: 0
   dotSprite: {fileID: 0}
+--- !u!1 &1995299681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1995299684}
+  - component: {fileID: 1995299683}
+  - component: {fileID: 1995299682}
+  m_Layer: 5
+  m_Name: PowerPelletText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1995299682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995299681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: TIme
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: b80b731f3a878184195bfee6450cb240, type: 2}
+  m_sharedMaterial: {fileID: -1997409973944218263, guid: b80b731f3a878184195bfee6450cb240, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 32
+  m_fontSizeBase: 32
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: -194.61626, w: -22.13597}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1995299683
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995299681}
+  m_CullTransparentMesh: 1
+--- !u!224 &1995299684
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995299681}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1225219306}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 1492, y: 455}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2002784297
 GameObject:
   m_ObjectHideFlags: 0

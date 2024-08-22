@@ -28,7 +28,7 @@ public class EnemyController : MonoBehaviour
 
     //Check variable for exit time
     [SerializeField] private bool exitTime;
-    [SerializeField] private bool hasPowerPellet;
+    public bool hasPowerPellet;
     
     //Reference to the movement script
     private MovementController movementController;
