@@ -12,6 +12,7 @@ public class MovementController : MonoBehaviour
 
     [SerializeField] private bool isGhost = false;
 
+
     // Start is called before the first frame update
     void Start()
     {

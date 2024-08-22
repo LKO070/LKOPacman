@@ -1167,6 +1167,7 @@ MonoBehaviour:
   speed: 2
   direction: 
   lastMovingDirection: 
+  isGhost: 0
 --- !u!114 &34584331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31477,6 +31478,7 @@ MonoBehaviour:
   speed: 1
   direction: 
   lastMovingDirection: 
+  isGhost: 1
 --- !u!4 &1136947306
 Transform:
   m_ObjectHideFlags: 0
@@ -31506,8 +31508,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 1
   type: 0
-  ghostNodeLeft: {fileID: 0}
-  ghostnodeRight: {fileID: 0}
+  ghostNodeLeft: {fileID: 1515613375}
+  ghostnodeRight: {fileID: 1412339435}
+  ghostNodeCenter: {fileID: 221984847}
+  ghostNodeStart: {fileID: 1838952142}
   startingNode: {fileID: 0}
   exitTime: 0
 --- !u!1 &1137259660

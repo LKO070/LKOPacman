@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int score;
     public TMP_Text scoreText;
 
-    public
+    public GameObject pacPlayer;
     void Awake()
     {
         score = 0;

@@ -32,9 +32,12 @@ public class EnemyController : MonoBehaviour
     //Reference to the movement script
     private MovementController movementController;
 
+    public GameManager gM;
+
     // Start is called before the first frame update
     void Awake()
     {
+        gM = GameObject.Find("GameManager").GetComponent<GameManager>();
         movementController = GetComponent<MovementController>();
 
         if (type == GhostType.red)
@@ -62,6 +65,10 @@ public class EnemyController : MonoBehaviour
         if (state == GhostNodeStatesEnum.movingInNodes)
         {
             //Determine next node
+            if (type == GhostType.red)
+            {
+                RedDirection();
+            }
         }
         else if (state == GhostNodeStatesEnum.respawning)
         {
@@ -97,5 +104,72 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
+
+    void RedDirection()
+    {
+        string direction = GetNearestDirection(gM.pacPlayer.transform.position);
+        movementController.SetDirection(direction);
+    }
     
+    void BlueDirection()
+    {
+
+    }
+
+    /// <summary>
+    /// Gets nearest direction towards player
+    /// </summary>
+    /// <param name="target"></param>
+    /// <returns>Nearest Direction</returns>
+    string GetNearestDirection(Vector2 target)
+    {
+        float shortestDistance = Mathf.Infinity;
+        string lastMovingDirection = movementController.lastMovingDirection;
+        string newDirection = "";
+
+        NodeControllingLogic nodeControl = movementController.currentNode.GetComponent<NodeControllingLogic>();
+
+        // Create an array of directions
+        string[] directions = { "up", "down", "left", "right" };
+
+        // Create corresponding node and condition pairs
+        Dictionary<string, GameObject> directionNodes = new Dictionary<string, GameObject>()
+    {
+        { "up", nodeControl.nodeUp },
+        { "down", nodeControl.nodeDown },
+        { "left", nodeControl.nodeLeft },
+        { "right", nodeControl.nodeRight }
+    };
+
+        Dictionary<string, bool> moveConditions = new Dictionary<string, bool>()
+    {
+        { "up", nodeControl.canMoveUp && lastMovingDirection != "down" },
+        { "down", nodeControl.canMoveDown && lastMovingDirection != "up" },
+        { "left", nodeControl.canMoveLeft && lastMovingDirection != "right" },
+        { "right", nodeControl.canMoveRight && lastMovingDirection != "left" }
+    };
+
+        foreach (var direction in directions)
+        {
+            // Check if move is possible and ghost is not reversing
+            if (moveConditions[direction])
+            {
+                // Get the node in the current direction
+                GameObject node = directionNodes[direction];
+
+                // Get distance between the node and the player
+                float distance = Vector2.Distance(node.transform.position, target);
+
+                // If this is the shortest distance, set the new direction
+                if (distance < shortestDistance)
+                {
+                    shortestDistance = distance;
+                    newDirection = direction;
+                }
+            }
+        }
+
+        return newDirection;
+    }
+
 }
