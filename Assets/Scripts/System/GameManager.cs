@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,13 +11,17 @@ public class GameManager : MonoBehaviour
     
     public AudioSource eat1, eat2;
 
+    public AudioSource death;
+
     //Variables for the score
     [SerializeField] private int score;
     public TMP_Text scoreText;
+    public GameObject deathText;
 
     public GameObject pacPlayer;
     void Awake()
     {
+        deathText.SetActive(false);
         score = 0;
         currentEatAudio = 0;
         siren = GetComponent<AudioSource>();
@@ -56,5 +61,16 @@ public class GameManager : MonoBehaviour
         //Check amount of pellets eaten
 
         //Check for power pellet
+    }
+
+    public void PacDeath()
+    {
+        siren.Stop();
+        death.Play();
+
+        Time.timeScale = 0;
+        deathText.SetActive(true);
+
+
     }
 }
