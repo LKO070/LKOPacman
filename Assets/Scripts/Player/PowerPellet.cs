@@ -9,7 +9,7 @@ public class PowerPellet : MonoBehaviour
     public TMP_Text pelletTimerText;
 
     private float timer;
-    private bool powerpelletActive = false;
+    public bool powerpelletActive = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,8 @@ public class PowerPellet : MonoBehaviour
             if (timer > 0)
             {
                 UpdateTimerUI();
-            }
+                Debug.Log("Timer is working");
+            }       
             else
             {
                 EndPowerPellet();
@@ -54,6 +55,7 @@ public class PowerPellet : MonoBehaviour
     /// </summary>
     void EndPowerPellet()
     {
+        Debug.Log("Ending working");
         powerpelletActive = false;
         pelletTimerText.gameObject.SetActive(false);
 
